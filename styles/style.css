@@ -34,8 +34,63 @@
   justify-content: flex-end;
 }
 
+/* 공통 검색 폼 */
+input[type="search"] {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.searchForm__group {
+  display: flex;
+  flex-flow: row nowrap;
+  /* 아래 margin-right 대신 gap으로 줘도 됨 */
+  /* gap: var(--spacing-xs); */
+}
+
+.searchForm__group .formInput {
+  margin-right: var(--spacing-xs);
+}
+
+.searchForm__group .formInput__input {
+  width: 100%;
+  height: 2rem;
+  border: 1px solid var(--silver);
+  background: var(--white);
+  border-radius: 0.25rem;
+  padding: var(--spacing-sxxs) var(--spacing-sm);
+}
+
+.button {
+  cursor: pointer;
+  height: 2rem;
+  border-radius: 0.25rem;
+  padding: 0.125rem 0.75rem;
+  flex: 0 0 auto;
+  /* flex-shrink: 0; */
+  /* white-space: nowrap; */
+  font-size: var(--text-sm);
+}
+
+.button--none {
+  border: 0;
+  padding: 0;
+  background: transparent;
+}
+
+.button--fill {
+  background: var(--secondary-color);
+  color: var(--white);
+  border: 0;
+}
+
+.button--outline {
+  background: transparent;
+  color: var(--secondary-color);
+  border: 1px solid currentColor;
+}
+
 /* 모바일 디바이스 (Mobile Device) */
-@media (min-width: 320px) and (max-width: 767px) {
+@media (min-width: 320px) and (max-width: 768px) {
   /* 모바일 헤더 */
   .appHeader {
     background: var(--primary-color);
@@ -47,6 +102,163 @@
     order: -1;
     font-size: var(--text-sm);
   }
+  
+  /* 모바일 검색 폼 */
+  .searchForm__group .formInput {
+    flex-grow: 1;
+  }
+
+  /* 모바일 메뉴 제어 버튼 시작 */
+  .buttonWrapper {
+    /* background-color: gold; */
+    padding: 0.25rem;
+    overflow: hidden;
+    position: absolute;
+    top: 3.75rem;
+    right: var(--spacing-lg);
+    transform: translate(0.25rem, -0.25rem);
+  }
+
+  .button--burger {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+  }
+
+  .button--burger:focus {
+    outline-offset: 2px;
+  }
+
+  [class*="button--burgerBar"] {
+    pointer-events: none;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    border-radius: 7px;
+    transition: all 0.3s;
+  }
+
+  .button--burgerBarTop {
+    top: 0;
+    background-color: burlywood;
+  }
+  .button--burgerBarMiddle3 {
+    top: 20%;
+    background-color: rgb(249, 223, 53);
+  }
+  .button--burgerBarMiddle1 {
+    top: 40%;
+    background-color: rgb(130, 230, 83);
+  }
+  .button--burgerBarMiddle2 {
+    top: 60%;
+    background-color: rgb(121, 44, 9);
+  }
+  .button--burgerBarBottom {
+    top: 80%;
+    background-color: burlywood;
+  }
+
+  .is--active .button--burgerBarTop {
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+  }
+  .is--active .button--burgerBarMiddle1 {
+    transform: translateX(-100%);
+  }
+  .is--active .button--burgerBarMiddle2 {
+    transform: translateX(-100%);
+  }
+  .is--active .button--burgerBarMiddle3 {
+    transform: translateX(-100%);
+  }
+  .is--active .button--burgerBarBottom {
+    top: 50%;
+    transform: translateY(-50%) rotate(-45deg);
+  }
+
+  /* 모바일 메인 메뉴 */
+  .menu__list {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 70%;
+    height: 100%;
+    padding: var(--spacing-lg);
+    background-color: var(--accent-opacity-color);
+    backdrop-filter: blur(2px);
+    transform: translateX(-100%);
+    transition: all .2s;
+  }
+
+  .menu.is--active .menu__list {
+    transform: translateX(0);
+  }
+
+  .menu__item {
+    border-bottom: 1px solid var(--silver);
+  }
+
+  .menu__link {
+    display: inline-block;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    font-weight: 700;
+  }
+}
+
+/* 데스크탑 디바이스 (Desktop Device) */
+@media (min-width: 769px) {
+  /* 데스크탑 헤더 */
+  .appHeader {
+    max-width: var(--container-width);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* 데스크탑 로고 */
+  .logo {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  /* 데스크탑 검색 폼 */
+  .searchForm__group {
+    justify-content: flex-end;
+  }
+
+  .searchForm__group .formInput {
+    width: 25rem;
+  }
+
+  /* 데스크탑 메인메뉴 제어버튼 */
+  .button--burger {
+    display: none;
+  }
+
+  /* 데스크탑 메인 메뉴 */
+  .menu {
+    padding: var(--spacing-base) 0;
+    background-color: var(--secondary-color);
+  }
+  .menu__list {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    max-width: var(--container-width);
+    margin: 0 auto;
+  }
+  .menu__item {
+    
+  }
+  .menu__link {
+    display: block;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    color: var(--white);
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, .6), -1px -1px 0 rgba(0, 0, 0, .6);
+  }
+
 }
 
 /* 고해상도 배경이미지 미디어쿼리 */

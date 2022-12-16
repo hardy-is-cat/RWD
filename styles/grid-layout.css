@@ -1,0 +1,84 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+/* 기본스타일 */
+.container {
+  display: grid;
+  grid-template-rows: auto;
+  padding: 24px;
+  gap: 24px;
+  background-color: silver;
+  border: 1px solid red;
+}
+
+[class*="group"] {
+  height: 150px;
+}
+
+/* small device */
+@media (max-width: 767px) {
+  .container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+/* medium device */
+@media (min-width: 768px) {
+  .container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+/* large device */
+@media (min-width: 1280px) {
+  .container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .group1 {
+    grid-column-start: 3;
+    grid-row-start: 2;
+    grid-column-end: span 2;
+  }
+}
+
+.group1 {
+  background-color: #ff4e50;
+}
+.group2 {
+  background-color: #f4b400;
+}
+.group3 {
+  background-color: #ede574;
+}
+.group4 {
+  background-color: #99b898;
+}
+.group5 {
+  background-color: #a4c639;
+}
+.group6 {
+  background-color: #0abfbc;
+}
+.group7 {
+  background-color: #fc9d9a;
+}
+.group8 {
+  background-color: #c8c8a9;
+}
+.group9 {
+  background-color: #83af9b;
+}
+.group10 {
+  background-color: #ecd078;
+}
+.group11 {
+  background-color: #4ecdc4;
+}
+.group12 {
+  background-color: #e08e79;
+}
