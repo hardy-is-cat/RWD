@@ -89,6 +89,111 @@ input[type="search"] {
   border: 1px solid currentColor;
 }
 
+/* 공통 메인 메뉴 */
+.menu__link {
+  display: block;
+  padding: var(--spacing-xs);
+  font-size: var(--text-md);
+  font-weight: 700;
+}
+
+/* 공통 메인 콘텐츠 */
+.appMain {
+  display: grid;
+  gap: var(--spacing-base);
+  padding: var(--spacing-base) var(--spacing-lg);
+}
+
+/* 공통 메인 콘텐츠 섹션 제목 */
+.appMain [class*="__title"] {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  padding-left: 4rem;
+  margin-bottom: var(--spacing-md);
+  font-size: 1.125rem;
+  font-weight: 700;
+  background: url("../images/sprite_main.png") no-repeat;
+}
+
+.appMain .sprite {
+  height: 3.75rem;
+}
+
+.sprite.spriteNews {
+  background-position: 0 -230px;
+}
+
+.sprite.spriteBook {
+  background-position: 0 0;
+}
+
+.sprite.spriteTwitter {
+  background-position: 0 -460px;
+}
+
+.sprite.spriteFavorite {
+  background-position: 0 -345px;
+}
+
+.sprite.spriteBoard {
+  background-position: 0 -115px;
+}
+
+.appMain [class*="__enTitle"] {
+  font-size: 1rem;
+  font-weight: 400;
+  font-size: var(--text-base);
+}
+
+.appMain .accentNews {
+  color: var(--accent-news);
+}
+.appMain .accentBook {
+  color: var(--accent-book);
+}
+.appMain .accentTwitter {
+  color: var(--accent-twitter);
+}
+.appMain .accentFavorite {
+  color: var(--accent-favorite);
+}
+.appMain .accentBoard {
+  color: var(--accent-board);
+}
+
+/* 공통 추천 서적 */
+.book {
+  background: lightgreen;
+  grid-area: book;
+  /* grid-area: 2/1/4/5; */
+}
+
+/* 공통 새소식 */
+.news {
+  background: skyblue;
+  grid-area: news;
+  /* grid-area: 2/5/3/9; */
+}
+/* 공통 게시판 */
+.board {
+  background: salmon;
+  grid-area: board;
+  /* grid-area: 3/6/4/13; */
+}
+/* 공통 인기 사이트 */
+.favorite {
+  background: sandybrown;
+  grid-area: favorite;
+  /* grid-area: 2/9/3/13; */
+}
+/* 공통 트위터 */
+.twitter {
+  background: palevioletred;
+  grid-area: twitter;
+  /* grid-area: 1/1/2/13; */
+}
+
 /* 모바일 디바이스 (Mobile Device) */
 @media (min-width: 320px) and (max-width: 768px) {
   /* 모바일 헤더 */
@@ -206,7 +311,20 @@ input[type="search"] {
     padding: var(--spacing-sm) var(--spacing-lg);
     font-weight: 700;
   }
+
+  /* 모바일 메인 콘텐츠 */
+  .appMain {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: 
+      "book"
+      "news"
+      "board"
+      "favorite"
+      "twitter";
+  }
 }
+
 
 /* 데스크탑 디바이스 (Desktop Device) */
 @media (min-width: 769px) {
@@ -259,6 +377,18 @@ input[type="search"] {
     text-shadow: 1px 1px 0 rgba(0, 0, 0, .6), -1px -1px 0 rgba(0, 0, 0, .6);
   }
 
+  /* 데스크탑 메인 콘텐츠 */
+  .appMain {
+    max-width: var(--container-width);
+    margin-left: auto;
+    margin-right: auto;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: auto;
+    grid-template-areas:
+      "news news news news news news news news news news news news"
+      "book book book book twitter twitter twitter twitter twitter favorite favorite favorite"
+      "book book book book . board board board board board board board";
+  }
 }
 
 /* 고해상도 배경이미지 미디어쿼리 */
