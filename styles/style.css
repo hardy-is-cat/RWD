@@ -169,6 +169,19 @@ input[type="search"] {
   /* grid-area: 2/1/4/5; */
 }
 
+.book__cover {
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+  background-color: yellow;
+}
+
+.book__coverCaption {
+  margin-top: var(--spacing-sm);
+  line-height: 1.6;
+}
+
 /* 공통 새소식 */
 .news {
   background: skyblue;
