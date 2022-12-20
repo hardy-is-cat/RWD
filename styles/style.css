@@ -262,16 +262,45 @@ input[type="search"] {
 
 /* 공통 인기 사이트 */
 .favorite {
-  background: sandybrown;
   grid-area: favorite;
   /* grid-area: 2/9/3/13; */
 }
 
 /* 공통 트위터 */
 .twitter {
-  background: palevioletred;
   grid-area: twitter;
   /* grid-area: 1/1/2/13; */
+}
+
+.twitter__userInfo {
+  /* background-color: aqua; */
+  display: inline-flex;
+  gap: var(--spacing-xs);
+}
+
+.twitter__userProfile {
+  /* background-color: pink; */
+  float: right;
+  width: 25%;
+  min-width: 3.125rem;
+  max-width: 6.25rem;
+  aspect-ratio: 1/1;
+  shape-outside: circle(50%);
+}
+
+.twitter__userProfileImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 40% 40%;
+  border-radius: 50%;
+  border: 1px solid var(--black);
+}
+
+.twitter__date {
+  /* background-color: green; */
+  display: inline-block;
+  margin-top: var(--spacing-sm);
 }
 
 /* 모바일 디바이스 (Mobile Device) */
