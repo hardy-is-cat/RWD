@@ -14,6 +14,11 @@
   gap: var(--spacing-base);
 }
 
+/* 공통 아이콘 (Font Awesome) */
+.far, .fas {
+  margin-right: var(--spacing-xs);
+}
+
 /* 공통 로고*/
 .logo {
   width: 12.75rem; /* 204px */
@@ -162,9 +167,14 @@ input[type="search"] {
   color: var(--accent-board);
 }
 
+/* 공통 메인 콘텐츠 섹션 본문 */
+.appMain [class*="__summary"] {
+  line-height: 1.5;
+  margin-top: var(--spacing-base);
+}
+
 /* 공통 추천 서적 */
 .book {
-  background: lightgreen;
   grid-area: book;
   /* grid-area: 2/1/4/5; */
 }
@@ -174,7 +184,6 @@ input[type="search"] {
   margin-right: auto;
   margin-left: auto;
   text-align: center;
-  background-color: yellow;
 }
 
 .book__coverCaption {
@@ -182,24 +191,82 @@ input[type="search"] {
   line-height: 1.6;
 }
 
+.book__info {
+  margin-top: var(--spacing-sm);
+  text-align: center;
+}
+
+.book__info * {
+  display: inline;
+}
+
+.ratingStar {
+  display: block;
+}
+
 /* 공통 새소식 */
 .news {
-  background: skyblue;
+  /* background: skyblue; */
   grid-area: news;
   /* grid-area: 2/5/3/9; */
 }
+
+.news__date {
+  display: block;
+  margin-top: var(--spacing-base);
+  text-align: right;
+}
+
 /* 공통 게시판 */
 .board {
-  background: salmon;
+  /* background: salmon; */
   grid-area: board;
   /* grid-area: 3/6/4/13; */
+  display: flex;
+  flex-flow: row wrap;
+  overflow: hidden;
 }
+
+.board__title {
+  flex-grow: 1;
+}
+
+.board__list {
+  order: 1;
+  /* flex: 1 1 auto; */
+  display: flex;
+  flex-flow: column nowrap;
+  gap: var(--spacing-xs);
+  width: 100%;
+}
+
+.board__item {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.board__link {
+  flex: 1 1 auto;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.board__date {
+  flex: 0 0 auto;
+}
+
+.board__more {
+  padding-top: var(--spacing-sm);
+}
+
 /* 공통 인기 사이트 */
 .favorite {
   background: sandybrown;
   grid-area: favorite;
   /* grid-area: 2/9/3/13; */
 }
+
 /* 공통 트위터 */
 .twitter {
   background: palevioletred;
@@ -335,6 +402,22 @@ input[type="search"] {
       "board"
       "favorite"
       "twitter";
+  }
+
+  /* 모바일 인기 사이트 */
+  .favorite {
+    background-color: yellow;
+  }
+
+  .favorite__item {
+    margin-top: var(--spacing-xs);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .favorite__link::after {
+    content: attr(data-tooltip);
+    color: var(--accent-favorite);
+    font-size: var(--text-sm);
   }
 }
 
